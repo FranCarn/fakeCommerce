@@ -5,5 +5,5 @@ export const userSchema = yup.object().shape({
   password: yup
     .string()
     .required("Campo obligatorio")
-    .min(8, "La contraseña debe tener al menos 8 caracteres"),
+    .min(5, "La contraseña debe tener al menos 5 caracteres"),
 });

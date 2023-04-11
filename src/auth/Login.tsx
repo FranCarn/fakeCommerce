@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Api } from "../services/Api";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from "../helpers/userSchema";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   username: string;
@@ -12,6 +13,7 @@ type FormData = {
 
 export const Login = () => {
   const [loginError, setLoginError] = useState<string | null>(null);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,7 +31,14 @@ export const Login = () => {
 
   const saveToken = (token: string) => {
     localStorage.setItem("token", token);
+    navigate("/home");
   };
+
+  useEffect(() => {
+    const isLogged = localStorage.getItem("token");
+    if (isLogged) navigate("/home");
+  }, []);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

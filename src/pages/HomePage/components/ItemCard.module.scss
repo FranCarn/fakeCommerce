@@ -1,0 +1,11 @@
+.productImage {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  &:hover {
+    object-fit: contain;
+  }
+}
+.productTitle {
+  color: #153248;
+}

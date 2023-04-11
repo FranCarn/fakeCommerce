@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../services/Api";
+import { Api } from "../../services/Api";
+import { useNavigate } from "react-router-dom";
+import { ItemCard } from "./components/ItemCard";
+import { Loader } from "../../components/Loader";
 
-interface Info {
+export interface Item {
   id: number;
   title: string;
   description: string;
   price: number;
   category: string;
   image: string;
-  rating: DataRating;
+  rating: ItemRating;
 }
 
-interface DataRating {
+interface ItemRating {
   count: number;
   rate: number;
 }
 
 export const HomePage = () => {
-  const [data, setData] = useState<Info[] | null>(null);
-
+  const [data, setData] = useState<Item[] | null>(null);
+  const navigate = useNavigate();
   const getData = async () => {
     const res = await Api("/products");
     setData(res);
@@ -28,28 +31,17 @@ export const HomePage = () => {
     getData();
   }, []);
 
-  const updatePriceToARS = (price: number): string => {
-    return new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: "ARS",
-    }).format(price * 398);
-  };
-
   const logout = () => {
     localStorage.removeItem("token");
+    navigate("/login");
   };
 
-  if (!data) return <div>Loading....</div>;
+  if (!data) return <Loader />;
   return (
     <div className="App">
       <button onClick={logout}>LOGOUT</button>
       {data.map((item) => {
-        return (
-          <div key={item.id}>
-            <img src={item.image} alt={item.title} />
-            <div>{updatePriceToARS(item.price)} ARS</div>
-          </div>
-        );
+        return <ItemCard item={item} key={item.id} />;
       })}
     </div>
   );

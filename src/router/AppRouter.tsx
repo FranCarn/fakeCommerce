@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, BrowserRouter } from "react-router-dom";
 import { Login } from "../auth/Login";
-import { BrowserRouter } from "react-router-dom";
 import { NotFound } from "../components/NotFound";
-import { HomePage } from "../pages";
+import { HomePage } from "../pages/HomePage/HomePage";
 
 function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="*" element={<NotFound />} />

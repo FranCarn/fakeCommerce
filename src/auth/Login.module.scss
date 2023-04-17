@@ -1,0 +1,66 @@
+.formContainer {
+  max-width: 550px;
+  margin-inline: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fieldGroup {
+  position: relative;
+  margin-block: 20px;
+}
+.fieldGroup label {
+  display: block;
+  margin-bottom: 10px;
+}
+.fieldGroup input {
+  width: 350px;
+  height: 30px;
+  border-radius: 10px;
+  text-indent: 10px;
+  border: none;
+  outline: none;
+  background: rgb(230, 230, 230);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.errorLabel {
+  position: absolute;
+  top: 55px;
+  color: rgb(255, 0, 0);
+}
+.buttonLogin {
+  align-self: center;
+  margin-block: 20px;
+  border-radius: 15px;
+  width: 150px;
+  height: 30px;
+  border: none;
+  background: rgb(230, 230, 230);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  &:hover {
+    background: #2e2e2e;
+    color: #fff;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+.footerContainer {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+.error {
+  position: absolute;
+  color: rgb(255, 0, 0);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

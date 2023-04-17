@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from "../helpers/userSchema";
 import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.scss";
 
 type FormData = {
   username: string;
@@ -41,20 +42,40 @@ export const Login = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+        <div className={styles.fieldGroup}>
           <label htmlFor="username">Nombre de usuario:</label>
-          <input type="text" id="username" {...register("username")} />
-          {errors.username && <p>{errors.username.message}</p>}
+          <input
+            type="text"
+            id="username"
+            {...register("username")}
+            placeholder="mor_2314"
+          />
+          {errors.username && (
+            <p className={styles.errorLabel}>{errors.username.message}</p>
+          )}
         </div>
-        <div>
+        <div className={styles.fieldGroup}>
           <label htmlFor="password">Contraseña:</label>
-          <input type="password" id="password" {...register("password")} />
-          {errors.password && <p>{errors.password.message}</p>}
+          <input
+            type="password"
+            id="password"
+            {...register("password")}
+            placeholder="83r5^_"
+          />
+          {errors.password && (
+            <p className={styles.errorLabel}>{errors.password.message}</p>
+          )}
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit" className={styles.buttonLogin}>
+          Enviar
+        </button>
+        <div className={styles.footerContainer}>
+          {loginError && (
+            <p className={styles.error}>{loginError.toUpperCase()}</p>
+          )}
+        </div>
       </form>
-      {loginError && <span>{loginError}</span>}
     </>
   );
 };

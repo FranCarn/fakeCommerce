@@ -19,6 +19,7 @@ export const ItemCard = ({ item }: Props) => {
           src={item.image}
           alt={item.title}
           className={styles.productImage}
+          draggable={false}
         />
       </div>
     </div>

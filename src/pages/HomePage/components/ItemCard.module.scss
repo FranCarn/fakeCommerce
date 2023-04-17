@@ -2,23 +2,17 @@
   width: 250px;
   height: 250px;
   object-fit: contain;
-  scale: 1;
-  transition: scale 0.3s;
-  &:hover {
-    scale: 0.9;
-    cursor: pointer;
-  }
-  margin-right: 15px;
 }
 .productTitle {
   color: #153248;
   max-width: 250px;
   text-align: center;
+  margin-bottom: 20px;
 }
-
 .card {
   display: flex;
   justify-content: center;
+  position: relative;
   border-radius: 35px;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
@@ -34,4 +28,5 @@
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.35);
     cursor: pointer;
   }
+  height: 350px;
 }

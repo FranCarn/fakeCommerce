@@ -32,21 +32,24 @@ export const ProductPage = () => {
 
   if (!data) return <Loader />;
   return (
-    <div className={styles.container}>
+    <>
       <span onClick={handleBack}>back</span>
-      <div>
-        <div className={styles.productTitle}>{data.title}</div>
-        <img
-          src={data.image}
-          alt={data.title}
-          className={styles.productImage}
-        />
+      <div className={styles.container}>
+        <div>
+          <img
+            src={data.image}
+            alt={data.title}
+            className={styles.productImage}
+            draggable={false}
+          />
+        </div>
+        <div className={styles.infoSection}>
+          <div className={styles.productTitle}>{data.title}</div>
+          <div className={styles.description}>{data.description}</div>
+          <div>Category: {data.category.toUpperCase()}</div>
+          <div className={styles.price}>{updatePriceToARS(data.price)} ARS</div>
+        </div>
       </div>
-      <div className={styles.infoSection}>
-        <div>{data.description}</div>
-        <div>{data.category}</div>
-        <div>{updatePriceToARS(data.price)} ARS</div>
-      </div>
-    </div>
+    </>
   );
 };

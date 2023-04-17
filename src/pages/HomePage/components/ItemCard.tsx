@@ -8,12 +8,6 @@ interface Props {
 
 export const ItemCard = ({ item }: Props) => {
   const navigate = useNavigate();
-  const updatePriceToARS = (price: number): string => {
-    return new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: "ARS",
-    }).format(price * 398);
-  };
   const handleRedirect = () => {
     navigate(`/product/${item.id}`);
   };
@@ -26,11 +20,6 @@ export const ItemCard = ({ item }: Props) => {
           alt={item.title}
           className={styles.productImage}
         />
-      </div>
-      <div className={styles.infoSection}>
-        <div>{item.description}</div>
-        <div>{item.category}</div>
-        <div>{updatePriceToARS(item.price)} ARS</div>
       </div>
     </div>
   );

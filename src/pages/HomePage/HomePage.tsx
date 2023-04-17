@@ -3,7 +3,7 @@ import { Api } from "../../services/Api";
 import { useNavigate } from "react-router-dom";
 import { ItemCard } from "./components/ItemCard";
 import { Loader } from "../../components/Loader";
-
+import styles from "./HomePage.module.scss";
 export interface Item {
   id: number;
   title: string;
@@ -40,9 +40,11 @@ export const HomePage = () => {
   return (
     <div className="App">
       <button onClick={logout}>LOGOUT</button>
-      {data.map((item) => {
-        return <ItemCard item={item} key={item.id} />;
-      })}
+      <div className={styles.cardContainer}>
+        {data.map((item) => {
+          return <ItemCard item={item} key={item.id} />;
+        })}
+      </div>
     </div>
   );
 };

@@ -13,15 +13,13 @@ export const ItemCard = ({ item }: Props) => {
   };
   return (
     <div className={styles.card} onClick={handleRedirect}>
-      <div>
-        <div className={styles.productTitle}>{item.title}</div>
-        <img
-          src={item.image}
-          alt={item.title}
-          className={styles.productImage}
-          draggable={false}
-        />
-      </div>
+      <div className={styles.productTitle}>{item.title}</div>
+      <img
+        src={item.image}
+        alt={item.title}
+        className={styles.productImage}
+        draggable={false}
+      />
     </div>
   );
 };

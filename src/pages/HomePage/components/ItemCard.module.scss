@@ -1,24 +1,24 @@
 .productImage {
-  width: 250px;
+  width: 200px;
   height: 250px;
   object-fit: contain;
+  align-self: center;
 }
 .productTitle {
   color: #153248;
-  max-width: 250px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  position: relative;
+  align-items: center;
   border-radius: 35px;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
-  max-width: 300px;
-  min-width: 300px;
+  width: 350px;
   padding: 15px;
   margin: auto;
   &:hover {

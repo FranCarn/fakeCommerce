@@ -4,6 +4,7 @@ import { Loader } from "../../components/Loader";
 import { Item } from "../HomePage/HomePage";
 import { Api } from "../../services/Api";
 import styles from "./ProductPage.module.scss";
+import { Button } from "../../components/Button/Button";
 export const ProductPage = () => {
   const [data, setData] = useState<Item | null>(null);
   const { id } = useParams();
@@ -33,7 +34,7 @@ export const ProductPage = () => {
   if (!data) return <Loader />;
   return (
     <>
-      <span onClick={handleBack}>back</span>
+      <Button clickHandler={handleBack} text="Back" />
       <div className={styles.container}>
         <div>
           <img

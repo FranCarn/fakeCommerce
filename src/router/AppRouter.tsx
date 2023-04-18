@@ -3,17 +3,20 @@ import { Login } from "../auth/Login";
 import { NotFound } from "../components/NotFound";
 import { HomePage } from "../pages/HomePage/HomePage";
 import { ProductPage } from "../pages/ProductPage/ProductPage";
+import { Layout } from "../components/Layout";
 
 function AppRouter() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

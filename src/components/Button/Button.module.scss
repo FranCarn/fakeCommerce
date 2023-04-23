@@ -22,3 +22,8 @@
     transform: translateY(1px);
   }
 }
+.btnFlex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

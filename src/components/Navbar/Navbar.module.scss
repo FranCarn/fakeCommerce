@@ -9,3 +9,38 @@
   justify-content: space-between;
   padding-inline: 1rem;
 }
+.profileDropDown {
+  margin-right: 5px;
+  border-radius: 99%;
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+}
+.dropDownOpen {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  right: 10px;
+  top: 50px;
+  height: 75px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #2e2e2e;
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: #2e2e2e;
+    top: -5px;
+    right: 11px;
+    transform: rotate(45deg);
+  }
+}
+.dropDownClosed {
+  display: none;
+}

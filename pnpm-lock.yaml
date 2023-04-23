@@ -10,6 +10,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hook-form: ^7.43.9
+  react-icons: ^4.8.0
   react-router-dom: ^6.10.0
   react-spinners: ^0.13.8
   sass: ^1.61.0
@@ -29,6 +30,7 @@ devDependencies:
   '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   axios: 1.3.5
   react-hook-form: 7.43.9_react@18.2.0
+  react-icons: 4.8.0_react@18.2.0
   react-router-dom: 6.10.0_biqbaboplfbrettd7655fr4n2y
   react-spinners: 0.13.8_biqbaboplfbrettd7655fr4n2y
   sass: 1.61.0
@@ -944,6 +946,14 @@ packages:
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: true
+
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+    peerDependencies:
+      react: '*'
     dependencies:
       react: 18.2.0
     dev: true

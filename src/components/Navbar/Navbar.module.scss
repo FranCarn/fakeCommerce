@@ -45,3 +45,8 @@
 .dropDownClosed {
   display: none;
 }
+.title {
+  &:hover {
+    cursor: pointer;
+  }
+}

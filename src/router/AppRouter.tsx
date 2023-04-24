@@ -14,7 +14,7 @@ function AppRouter() {
     <Provider store={store}>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={1500}
         limit={1}
         hideProgressBar={false}
         newestOnTop={false}

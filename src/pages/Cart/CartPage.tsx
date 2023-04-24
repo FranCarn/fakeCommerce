@@ -6,9 +6,10 @@ import { updatePriceToARS } from "../../helpers/updatePriceToARS";
 import { RootState } from "../../redux/store";
 import { CartCard } from "./components/CartCard";
 import { IoMdCart } from "react-icons/io";
+import { removeAll } from "../../redux/cartReducer";
 export const CartPage = () => {
   const { cart } = useSelector((state: RootState) => state);
-
+  const dispatch = useDispatch();
   const totalPrice = cart.reduce(
     (total: number, item: Item): number => total + item.price,
     0
@@ -27,6 +28,7 @@ export const CartPage = () => {
         ))}
       </div>
       TOTAL: {updatePriceToARS(totalPrice)} ARS
+      <p onClick={() => dispatch(removeAll())}>REMOVE ALL FROM CART</p>
     </div>
   );
 };

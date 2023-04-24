@@ -2,7 +2,7 @@ import React from "react";
 import { Loader } from "./Loader";
 import { useNavigate } from "react-router-dom";
 
-export const NotFound = () => {
+export const NotFoundPage = () => {
   const navigate = useNavigate();
   setTimeout(() => {
     navigate("/login");

@@ -1,37 +1,32 @@
-import React from "react";
-import { Button } from "../../components/Button";
 import styles from "./CartPage.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { NotFound } from "../../components/NotFound";
-import { removeFromCart } from "../../redux/cartReducer";
+import { NotFoundItems } from "../../components/NotFoundItems";
 import { Item } from "../HomePage/HomePage";
-import { MdRemoveShoppingCart } from "react-icons/md";
 import { updatePriceToARS } from "../../helpers/updatePriceToARS";
 import { RootState } from "../../redux/store";
+import { CartCard } from "./components/CartCard";
+import { IoMdCart } from "react-icons/io";
 export const CartPage = () => {
   const { cart } = useSelector((state: RootState) => state);
-  const dispatch = useDispatch();
-  if (!cart.length) return <NotFound />;
-  return cart.map((item: Item) => (
-    <div className={styles.container}>
-      <div>
-        <img
-          src={item.image}
-          alt={item.title}
-          className={styles.productImage}
-          draggable={false}
-        />
+
+  const totalPrice = cart.reduce(
+    (total: number, item: Item): number => total + item.price,
+    0
+  );
+
+  if (!cart.length) return <NotFoundItems />;
+
+  return (
+    <div>
+      <h1 className={styles.pageTitle}>
+        CART <IoMdCart />
+      </h1>
+      <div className={styles.container}>
+        {cart.map((item: Item) => (
+          <CartCard item={item} key={item.id} />
+        ))}
       </div>
-      <div className={styles.infoSection}>
-        <div className={styles.productTitle}>{item.title}</div>
-        <div className={styles.description}>{item.description}</div>
-        <div>Category: {item.category.toUpperCase()}</div>
-        <div className={styles.price}>{updatePriceToARS(item.price)} ARS</div>
-        <Button
-          logo={<MdRemoveShoppingCart />}
-          clickHandler={() => dispatch(removeFromCart(item))}
-        />
-      </div>
+      TOTAL: {updatePriceToARS(totalPrice)} ARS
     </div>
-  ));
+  );
 };

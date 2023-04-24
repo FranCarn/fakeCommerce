@@ -9,13 +9,14 @@ import { IoMdCart } from "react-icons/io";
 import { addToCart } from "../../redux/cartReducer";
 import { useDispatch } from "react-redux";
 import { updatePriceToARS } from "../../helpers/updatePriceToARS";
+import { toast } from "react-toastify";
 
 export const ProductPage = () => {
   const [data, setData] = useState<Item | null>(null);
   const dispatch = useDispatch();
-
   const { id } = useParams();
   const navigate = useNavigate();
+
   const getData = async () => {
     try {
       const res = await Api(`/products/${id}`);
@@ -27,6 +28,11 @@ export const ProductPage = () => {
 
   const handleBack = () => {
     navigate("/home");
+  };
+
+  const handleAddToCart = (item: Item) => {
+    dispatch(addToCart(item));
+    toast("Item has add to cart", { type: "success" });
   };
 
   useEffect(() => {
@@ -52,8 +58,8 @@ export const ProductPage = () => {
           <div>Category: {data.category.toUpperCase()}</div>
           <div className={styles.price}>{updatePriceToARS(data.price)} ARS</div>
           <Button
-            logo={<IoMdCart />}
-            clickHandler={() => dispatch(addToCart(data))}
+            logo={<IoMdCart title="Add item to cart" />}
+            clickHandler={() => handleAddToCart(data)}
           />
         </div>
       </div>

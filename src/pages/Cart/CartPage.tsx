@@ -7,8 +7,9 @@ import { removeFromCart } from "../../redux/cartReducer";
 import { Item } from "../HomePage/HomePage";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { updatePriceToARS } from "../../helpers/updatePriceToARS";
+import { RootState } from "../../redux/store";
 export const CartPage = () => {
-  const { cart } = useSelector((state) => state);
+  const { cart } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   if (!cart.length) return <NotFound />;
   return cart.map((item: Item) => (

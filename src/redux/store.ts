@@ -6,3 +6,10 @@ export const store = configureStore({
     cart: cartReducer,
   },
 });
+import { combineReducers } from "@reduxjs/toolkit";
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
+});
+
+export type RootState = ReturnType<typeof rootReducer>;

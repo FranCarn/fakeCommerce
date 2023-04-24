@@ -5,8 +5,15 @@ import { Item } from "../HomePage/HomePage";
 import { Api } from "../../services/Api";
 import styles from "./ProductPage.module.scss";
 import { Button } from "../../components/Button/Button";
+import { IoMdCart } from "react-icons/io";
+import { addToCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
+import { updatePriceToARS } from "../../helpers/updatePriceToARS";
+
 export const ProductPage = () => {
   const [data, setData] = useState<Item | null>(null);
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   const navigate = useNavigate();
   const getData = async () => {
@@ -17,12 +24,7 @@ export const ProductPage = () => {
       console.log(error);
     }
   };
-  const updatePriceToARS = (price: number): string => {
-    return new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: "ARS",
-    }).format(price * 398);
-  };
+
   const handleBack = () => {
     navigate("/home");
   };
@@ -49,6 +51,10 @@ export const ProductPage = () => {
           <div className={styles.description}>{data.description}</div>
           <div>Category: {data.category.toUpperCase()}</div>
           <div className={styles.price}>{updatePriceToARS(data.price)} ARS</div>
+          <Button
+            logo={<IoMdCart />}
+            clickHandler={() => dispatch(addToCart(data))}
+          />
         </div>
       </div>
     </>
